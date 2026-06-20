@@ -360,9 +360,9 @@ body {
 
 <p>Premium Dining Experience</p>
 
-<a href="https://wa.me/918790606201" class="btn">
+<button onclick="sendWhatsAppOrder()" class="btn">
 Order On WhatsApp
-</a>
+</button>
 
 </div>
 
@@ -399,8 +399,8 @@ Add To Cart
 <img src="veg noodles.jpg">
 <div class="card-content">
 <h3>Veg Noodles</h3>
-<p>₹1</p>
-<button onclick="addToCart('Veg Noodles',1)" class="btn">
+<p>₹60</p>
+<button onclick="addToCart('Veg Noodles',60)" class="btn">
 Add To Cart
 </button>
 </div>
@@ -478,9 +478,9 @@ Add To Cart
 <br>
 <h3>📞 +91 8790606201</h3>
 <br><br>
-<a href="https://wa.me/918790606201" class="btn">
+<button onclick="sendWhatsAppOrder()" class="btn">
 WhatsApp Order
-</a>
+</button>
 </section>
   
 
@@ -782,6 +782,42 @@ function goBack(){
   document.getElementById("backBtn").style.display = "none";
 }
 
+
+function sendWhatsAppOrder(){
+
+  let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+  if(cart.length == 0){
+    alert("Cart is empty!");
+    return;
+  }
+
+  let phone = "918790606201";
+  let total = 0;
+
+  let message = "🍽 Royal Feast Order\n\n";
+
+  cart.forEach((item,index)=>{
+
+    let amount = item.price * item.qty;
+    total += amount;
+
+    message += `${index+1}. ${item.name}\n`;
+    message += `Qty : ${item.qty}\n`;
+    message += `Price : ₹${amount}\n\n`;
+
+  });
+
+  message += `💰 Total Amount : ₹${total}`;
+
+  let url =
+    "https://wa.me/" +
+    phone +
+    "?text=" +
+    encodeURIComponent(message);
+
+  window.open(url,"_blank");
+}
 
 </script>
 
