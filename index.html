@@ -668,7 +668,13 @@ function openReviews() {
 renderCart();
 
 function openPayment(){
-  document.getElementById("paymentModal").style.display="flex";
+
+  if(cart.length === 0){
+    alert("🛒 Please add items to cart first!");
+    return;
+  }
+
+  document.getElementById("paymentModal").style.display = "flex";
 }
 
 function closeModal(){
