@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Order Success</title>
+
+<style>
+body{
+background:#111;
+color:white;
+font-family:Poppins;
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
+}
+
+.box{
+background:#1b1b1b;
+padding:40px;
+border-radius:20px;
+text-align:center;
+width:350px;
+}
+
+.status{
+color:red;
+font-size:20px;
+}
+
+.btn{
+background:#ff4d4d;
+color:white;
+padding:12px 25px;
+border:none;
+border-radius:30px;
+cursor:pointer;
+margin-top:20px;
+}
+</style>
+
+</head>
+<body>
+
+<div class="box">
+
+<h1>✅ Order Placed Successfully</h1>
+
+<h2>💵 Cash On Delivery</h2>
+
+<p class="status">
+Payment Status : NOT PAID
+</p>
+
+<h3 id="orderId"></h3>
+
+<button class="btn"
+onclick="window.location.href='index.html'">
+Back To Menu
+</button>
+
+</div>
+
+<script>
+
+document.getElementById("orderId").innerHTML =
+"Order ID : " + localStorage.getItem("lastOrderId");
+
+</script>
+
+</body>
+</html>
